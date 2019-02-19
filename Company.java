@@ -2,10 +2,10 @@ public class Company
 {
 	String name;
 	String buisnessDomain;
-    String license;
-    int fiscalYear;
-    int branchCount;
-    Branch[] branchs;
+    	String license;
+    	int fiscalYear;
+    	int branchCount;
+    	Branch[] branchs;
   
     public Company(String name, String buisnessDomain, String license, int fiscalYear)
     {
@@ -50,14 +50,15 @@ public class Company
 		   	    output += branchs[i].getQuarterlyProfit(j) + "\t";
 		    }
 			System.out.println("\n");
-		    output += branchs[i].getAnnualProfit() + "\t";
+		    	output += branchs[i].getAnnualProfit() + "\t";
 	    }
 		return output;
     }
   
-  //TODO
   public String toString()
   {
-	  return null;
+	String output = "Company name: " + name + "\n + Domain: " + buisnessDomain + "\n + License: " + license
+		+ "\n + Fiscal Year: " + fiscalYear;
+	return output;
   }
 }
