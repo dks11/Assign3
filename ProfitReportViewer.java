@@ -3,13 +3,54 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-
+import java.util.InputMismatchException;
+/**
+This is the viewer class which prints out the report
+@author Dakota Staples
+*/
 public class ProfitReportViewer {
     
-    public static void main(String[] args) {
-        
-	// TODO: implement this method.
-    
+	/**
+	This is the main method, it prints the report out using other methods, it catchs multiple exceptions
+	@param args The command Line arguments
+	@throws MissingFileNameArgumentException If the file name is missing
+	*/
+	public static void main(String[] args) throws MissingFileNameArgumentException {
+		Branch b1;
+		Company c1;
+        try {
+            if (args.length == 0) {
+                throw new MissingFileNameArgumentException("Missing Input File Name");
+            }
+			File f1 = new File(args[0]);
+            Scanner stdin = new Scanner(f1); 
+			//Printing the header
+			printReportHeader(stdin.next(), stdin.next(), stdin.next(), stdin.nextInt());
+			//Printing the branches data and values
+			while(stdin.hasNext())
+			{
+				printBranchProfit(stdin.next(), stdin.next(),
+					stdin.nextDouble(),stdin.nextDouble(),stdin.nextDouble(),stdin.nextDouble(),
+					stdin.nextDouble());
+			}
+			
+			
+        }
+		// Catching exceptions below, Missing file name, index out of bounds, no such element, and io exception
+        catch (MissingFileNameArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Output File name not supplied");
+		}
+		
+		catch(NoSuchElementException e)
+		{
+			System.out.println("No such element");
+		}
+        catch (IOException e) {
+            System.out.println("Problem Reading File");
+        }
     }    
     
     
