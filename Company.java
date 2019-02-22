@@ -93,7 +93,7 @@ public class Company
 		String output = "";
 	    for(int i = 0; i < branchCount; i++)
 	    {
-		    for(int j = 0; j < branchs.length; j ++)
+		    for(int j = 0; j < branchs.length-1; j ++)
 		    {
 		   	    output += branchs[i].getQuarterlyProfit(j) + "\t";
 		    }

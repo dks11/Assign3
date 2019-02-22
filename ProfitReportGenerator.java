@@ -28,6 +28,7 @@ public class ProfitReportGenerator
 			br = new BufferedReader(reader);
 			stdin = new Scanner(br);
 			c1 = new Company(stdin.nextLine(), stdin.nextLine(), stdin.nextLine(), stdin.nextInt()); 
+			stdin.nextLine();
 		}
 		
 		catch(MissingFileNameArgumentException e)
@@ -62,9 +63,7 @@ public class ProfitReportGenerator
 
 		while(stdin.hasNext())
 		{
-			String temp = stdin.next();
-			System.out.println(temp);
-			
+			String temp = stdin.nextLine();	
 			Scanner scan = new Scanner(temp);
 			scan.useDelimiter(",");
 			Branch b1;

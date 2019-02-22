@@ -33,7 +33,7 @@ public class Branch
 	{
        branchId = Id;
        branchLocation = location;
-	   quarterProfit = new double[3];
+	   quarterProfit = new double[4];
 	}
   
 	/**
