@@ -27,7 +27,7 @@ public class ProfitReportGenerator
 			reader = new FileReader(args[0]);
 			br = new BufferedReader(reader);
 			stdin = new Scanner(br);
-			c1 = new Company(stdin.next(), stdin.next(), stdin.next(), stdin.nextInt()); 
+			c1 = new Company(stdin.nextLine(), stdin.nextLine(), stdin.nextLine(), stdin.nextInt()); 
 		}
 		
 		catch(MissingFileNameArgumentException e)
@@ -45,6 +45,7 @@ public class ProfitReportGenerator
 		catch(InputMismatchException e)
 		{
 			System.out.println("Wrong type of input");
+			return;
         }
 		
 		catch(FileNotFoundException e)
@@ -56,26 +57,50 @@ public class ProfitReportGenerator
 		catch(NoSuchElementException e)
 		{
 			System.out.println("No such element");
+			return;
 		}
 
 		while(stdin.hasNext())
 		{
-			Branch b1 = new Branch(stdin.next(), stdin.next());
+			String temp = stdin.next();
+			System.out.println(temp);
 			
+			Scanner scan = new Scanner(temp);
+			scan.useDelimiter(",");
+			Branch b1;
 			try
 			{
-			b1.calculateQuarterlyProfit(stdin.nextDouble(), stdin.nextDouble());
-			b1.calculateQuarterlyProfit(stdin.nextDouble(), stdin.nextDouble());
-			b1.calculateQuarterlyProfit(stdin.nextDouble(), stdin.nextDouble());
-			b1.calculateQuarterlyProfit(stdin.nextDouble(), stdin.nextDouble());
+				b1 = new Branch(scan.next(), scan.next());
+			
+			
+				b1.calculateQuarterlyProfit(scan.nextDouble(), scan.nextDouble());
+				b1.calculateQuarterlyProfit(scan.nextDouble(), scan.nextDouble());
+				b1.calculateQuarterlyProfit(scan.nextDouble(), scan.nextDouble());
+				b1.calculateQuarterlyProfit(scan.nextDouble(), scan.nextDouble());
+				
+				c1.addBranch(b1);
+			}
+			catch(InputMismatchException e)
+			{
+				System.out.println("Wrong type of input");
+				return;
 			}
 			catch(InvalidQuarterException e)
 			{
 				System.out.println("Invalid Quarter");
 				return;
 			}
+			catch(NoSuchElementException e)
+			{
+				System.out.println("No such element");
+				return;
+			}
 			
-			c1.addBranch(b1);
+			catch(NullPointerException e)
+			{
+				System.out.println("Null Pointer");
+				return;
+			}
 		}
 
 		try
@@ -87,17 +112,7 @@ public class ProfitReportGenerator
 		{
 			System.out.println("Failed to close reader");
 		}
-		
-		catch(InputMismatchException e)
-		{
-			System.out.println("Wrong type of input");
-        }
-		
-		catch(NullPointerException e)
-		{
-			System.out.println(e.getMessage());
-			return;
-		}
+
 		generateReportFile(c1,args[1]);
 	}	
 
@@ -105,12 +120,13 @@ public class ProfitReportGenerator
 	{
 		FileWriter writer; 
 		BufferedWriter bw; 
+		PrintWriter out;
 		
 		try
 		{
 			writer = new FileWriter(outputFileName);
 			bw = new BufferedWriter(writer);
-			PrintWriter out = new PrintWriter(bw);
+			out = new PrintWriter(bw);
 		}
 
 		catch(ArrayIndexOutOfBoundsException e)
@@ -121,8 +137,11 @@ public class ProfitReportGenerator
 		
 		catch(IOException e)
 		{
-			System.out.println("Problem Reading File");
+			System.out.println("Problem Opening Writer");
 			return;
 		}			
+		out.println(company.toString());
+		out.println(company.getProfitTotals());
+
 	}
 }
