@@ -139,8 +139,9 @@ public class ProfitReportGenerator
 			System.out.println("Problem Opening Writer");
 			return;
 		}			
-		out.println(company.toString());
-		out.println(company.getProfitTotals());
+		out.println(company);
+		out.println(company.getBranchs()[0] + "\n" + company.getBranchs()[1] + "\n" +
+			company.getBranchs()[2] + "\n" + company.getBranchs()[3] + "\n");
 
 	}
 }

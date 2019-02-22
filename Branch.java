@@ -85,7 +85,7 @@ public class Branch
 	*/
 	  public String toString()
 	  {
-		return branchId + "\t" + branchLocation + "\t" + quarterProfit[0] + "\t" + quarterProfit[1] +
-			"\t" + quarterProfit[2] + "\t" + quarterProfit[3];
+		return branchId + "," + branchLocation + "," + quarterProfit[0] + "," + quarterProfit[1] +
+			"," + quarterProfit[2] + "," + quarterProfit[3];
 	  }
 }

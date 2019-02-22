@@ -8,32 +8,32 @@ public class Company
 	/**
 	This is the company name
 	*/
-	String name;
+	private String name;
 	
 	/**
 	This is the company domain
 	*/
-	String buisnessDomain;
+	private String buisnessDomain;
 	
 	/**
 	This is the license number
 	*/
-    String license;
+    private String license;
 	
 	/**
 	This is the fiscal Year
 	*/
-    int fiscalYear;
+    private int fiscalYear;
 	
 	/**
 	This is the branch count
 	*/
-    int branchCount;
+    private int branchCount;
 	
 	/**
 	This is the array of branchs
 	*/
-    Branch[] branchs;
+    private Branch[] branchs;
   
   
 	/**
@@ -53,6 +53,7 @@ public class Company
       branchs = new Branch[5];
     }
   
+	
 	/** This adds a new branch to the array
 	@param branch The branch to addBranch
 	*/
@@ -95,10 +96,10 @@ public class Company
 	    {
 		    for(int j = 0; j < branchs.length-1; j ++)
 		    {
-		   	    output += branchs[i].getQuarterlyProfit(j) + "\t";
+		   	    output += branchs[i].getQuarterlyProfit(j) + ",";
 		    }
 			System.out.println("\n");
-		    	output += branchs[i].getAnnualProfit() + "\t";
+		    	output += branchs[i].getAnnualProfit() + "\n";
 	    }
 		return output;
     }
@@ -109,8 +110,8 @@ public class Company
   */
   public String toString()
   {
-	String output = "Company name: " + name + "\n + Domain: " + buisnessDomain + "\n + License: " + license
-		+ "\n + Fiscal Year: " + fiscalYear;
+	String output = name + "\n" + buisnessDomain + "\n" + license
+		+ "\n" + fiscalYear;
 	return output;
   }
 }
